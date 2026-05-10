@@ -14,7 +14,7 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(cors({
-  origin: 'http://localhost:5173', // React dev server
+  origin: 'https://company-react-view.vercel.app', // React dev server
   credentials: true
 }))
 
