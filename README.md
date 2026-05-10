@@ -29,7 +29,8 @@ profile-portal-frontend/
    - MongoDB for data storage
 
 4. **Deployment**
-   - Deploy to Vercel
+   - Render: https://company-react-view.onrender.com
+   - Vercel: https://company-react-view.vercel.app
 
 ## Build Phases
 
