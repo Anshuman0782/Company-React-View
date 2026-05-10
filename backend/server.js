@@ -9,12 +9,16 @@ import formRoutes from './routes/form.js'
 dotenv.config()
 
 const app = express()
+const allowedOrigins = (process.env.FRONTEND_URL || 'http://localhost:5173,https://company-react-view.vercel.app')
+  .split(',')
+  .map(origin => origin.trim())
+  .filter(Boolean)
 
 // Middleware
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(cors({
-  origin: 'https://company-react-view.vercel.app', // React dev server
+  origin: allowedOrigins,
   credentials: true
 }))
 

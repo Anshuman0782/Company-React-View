@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
-import axios from 'axios'
+import api from '../api'
 
 export default function LoginPage({ onLoginSuccess }) {
   const navigate = useNavigate()
@@ -25,8 +25,7 @@ export default function LoginPage({ onLoginSuccess }) {
     setLoading(true)
 
     try {
-      // API call to backend
-      const response = await axios.post('https://company-react-view.onrender.com/api/auth/login', {
+      const response = await api.post('/api/auth/login', {
         email: formData.email,
         password: formData.password
       })

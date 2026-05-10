@@ -31,6 +31,7 @@ function App() {
     setIsAuthenticated(false)
     setUserEmail('')
     localStorage.removeItem('userEmail')
+    localStorage.removeItem('authToken')
   }
 
   return (

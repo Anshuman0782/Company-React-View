@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
+import api from '../api'
 
 export default function ApplicationsPage({ userEmail, onLogout }) {
   const navigate = useNavigate()
@@ -14,12 +14,7 @@ export default function ApplicationsPage({ userEmail, onLogout }) {
 
   const fetchApplications = async () => {
     try {
-      const token = localStorage.getItem('authToken')
-      const response = await axios.get('http://localhost:5000/api/form', {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      })
+      const response = await api.get('/api/form')
 
       if (response.data.success) {
         setApplications(response.data.applications)

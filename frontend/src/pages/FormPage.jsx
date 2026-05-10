@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
+import api from '../api'
 
 export default function FormPage({ userEmail, onLogout }) {
   const navigate = useNavigate()
@@ -24,12 +24,7 @@ export default function FormPage({ userEmail, onLogout }) {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const token = localStorage.getItem('authToken')
-        const response = await axios.get(`http://localhost:5000/api/user/${userEmail}`, {
-          headers: {
-            'Authorization': `Bearer ${token}`
-          }
-        })
+        const response = await api.get(`/api/user/${encodeURIComponent(userEmail)}`)
 
         if (response.data.success) {
           const userData = response.data.user
@@ -68,15 +63,7 @@ export default function FormPage({ userEmail, onLogout }) {
     setLoading(true)
 
     try {
-      const token = localStorage.getItem('authToken')
-      const response = await axios.post('https://company-react-view.onrender.com/api/form/submit', 
-        formData,
-        {
-          headers: {
-            'Authorization': `Bearer ${token}`
-          }
-        }
-      )
+      const response = await api.post('/api/form/submit', formData)
 
       if (response.data.success) {
         navigate('/thank-you')

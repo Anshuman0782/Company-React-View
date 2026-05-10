@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
-import axios from 'axios'
+import api from '../api'
 
 export default function SignupPage({ onSignupSuccess }) {
   const navigate = useNavigate()
@@ -44,8 +44,7 @@ export default function SignupPage({ onSignupSuccess }) {
     setLoading(true)
 
     try {
-      // API call to backend
-      const response = await axios.post('https://company-react-view.onrender.com/api/auth/signup', {
+      const response = await api.post('/api/auth/signup', {
         name: formData.name,
         email: formData.email,
         phone: formData.phone,

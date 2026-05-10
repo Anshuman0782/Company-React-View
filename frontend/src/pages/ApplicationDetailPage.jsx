@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import axios from 'axios'
+import api from '../api'
 
 export default function ApplicationDetailPage({ onLogout }) {
   const navigate = useNavigate()
@@ -15,12 +15,7 @@ export default function ApplicationDetailPage({ onLogout }) {
 
   const fetchApplicationDetail = async () => {
     try {
-      const token = localStorage.getItem('authToken')
-      const response = await axios.get(`https://company-react-view.onrender.com/api/form/${id}`, {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      })
+      const response = await api.get(`/api/form/${id}`)
 
       if (response.data.success) {
         setApplication(response.data.application)
