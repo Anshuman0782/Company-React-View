@@ -16,7 +16,7 @@ export default function ApplicationDetailPage({ onLogout }) {
   const fetchApplicationDetail = async () => {
     try {
       const token = localStorage.getItem('authToken')
-      const response = await axios.get(`http://localhost:5000/api/form/${id}`, {
+      const response = await axios.get(`https://company-react-view.onrender.com/api/form/${id}`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }

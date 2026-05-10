@@ -45,7 +45,7 @@ export default function SignupPage({ onSignupSuccess }) {
 
     try {
       // API call to backend
-      const response = await axios.post('http://localhost:5000/api/auth/signup', {
+      const response = await axios.post('https://company-react-view.onrender.com/api/auth/signup', {
         name: formData.name,
         email: formData.email,
         phone: formData.phone,
